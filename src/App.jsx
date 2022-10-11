@@ -16,20 +16,17 @@ function App() {
         "100g of grated pecorino romano cheese", 
         "Ground black pepper"],
       likes: false,
-      disliked: false
+      dislikes: false
     },
     {
       key: 1,
-      name: "Carbonara",
-      description: "Roman pasta dish",
-      ingredients: ["350g of spaghetti",
-        "200g Guanciale", 
-        "2 Whole eggs", 
-        "2 Egg yolks", 
-        "100g of grated pecorino romano cheese", 
-        "Ground black pepper"],
+      name: "Another recipe",
+      description: "Tastes great",
+      ingredients: ["25g of testing",
+        "Sprinkle of praying", 
+        "Tears"],
       likes: false,
-      disliked: false
+      dislikes: false
     },
   ]
   // Initialise a state, containing our base recipes (setRecipes to alter the likes)

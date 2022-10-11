@@ -1,4 +1,5 @@
 import thumbsUp from '../../assets/thumbsUp.svg'
+import IngredientList from '../IngredientList'
 
 const Recipe = ({recipe, recipes, setRecipes}) => {
     
@@ -8,7 +9,22 @@ const Recipe = ({recipe, recipes, setRecipes}) => {
             if (recItem === recipe) {
                 return {
                     ...recItem,
+                    dislikes: false,
                     likes: !recItem.likes // Return the opposite of what it currently is 
+                }
+            }
+            return recItem;
+        }));
+    }
+
+    // Add dislike/undislike functionality
+    const handleDislikes = () => {
+        setRecipes(recipes.map(recItem => {
+            if (recItem === recipe) {
+                return {
+                    ...recItem,
+                    likes: false,
+                    dislikes: !recItem.dislikes // Return the opposite of what it currently is 
                 }
             }
             return recItem;
@@ -17,14 +33,21 @@ const Recipe = ({recipe, recipes, setRecipes}) => {
     
     return (
         <div className="recipe-item">
-            <li>
-                <div>{recipe.name}</div>
-                <div>{recipe.description}</div>
-                <div>{recipe.ingredients}</div>
+            <li className='recipe-cont-list'>
+                <div>{"Dish Name: " + recipe.name}</div>
+                <div>{"Dish Description: " + recipe.description}</div>
+                <ul className='ingredients-list'>
+                    {<IngredientList ingredients={recipe.ingredients}/>}
+                </ul>
             </li>
-            <button className={`like-btn ${recipe.likes ? "liked" : ""}`} onClick={handleLikes}>
-                <img src={thumbsUp}></img>
-            </button>
+            <div className='btn-container'>
+                <button className={`like-btn ${recipe.likes ? "liked" : ""}`} onClick={handleLikes}>
+                    <img src={thumbsUp}></img>
+                </button>
+                <button className={`dislike-btn ${recipe.dislikes ? "disliked" : ""}`} onClick={handleDislikes}>
+                    <img className="dislike-thumb" src={thumbsUp}></img>
+                </button>
+            </div>
         </div>
     )
 }
