@@ -1,12 +1,21 @@
 import { useState } from 'react'
 import './App.css'
+import { Header } from './components'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <header>Welcome to my recipes app</header>
+      <Header 
+        headerNum={1}
+        headerText={"Welcome to React Recipes"}
+      />
+
+      <Header
+        headerNum={2}
+        headerText={"Recipes: "}
+      />
 
     </div>
   )
