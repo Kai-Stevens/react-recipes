@@ -1,9 +1,39 @@
 import { useState } from 'react'
 import './App.css'
-import { Header } from './components'
+import { Header, RecipeList } from './components'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Define the base recipes
+  const recipesInit = [
+    {
+      key: 0,
+      name: "Carbonara",
+      description: "Roman pasta dish",
+      ingredients: ["350g of spaghetti",
+        "200g Guanciale", 
+        "2 Whole eggs", 
+        "2 Egg yolks", 
+        "100g of grated pecorino romano cheese", 
+        "Ground black pepper"],
+      likes: false,
+      disliked: false
+    },
+    {
+      key: 1,
+      name: "Carbonara",
+      description: "Roman pasta dish",
+      ingredients: ["350g of spaghetti",
+        "200g Guanciale", 
+        "2 Whole eggs", 
+        "2 Egg yolks", 
+        "100g of grated pecorino romano cheese", 
+        "Ground black pepper"],
+      likes: false,
+      disliked: false
+    },
+  ]
+  // Initialise a state, containing our base recipes (setRecipes to alter the likes)
+  const [recipes, setRecipes] = useState(recipesInit);
 
   return (
     <div className="App">
@@ -14,7 +44,12 @@ function App() {
 
       <Header
         headerNum={2}
-        headerText={"Recipes: "}
+        headerText={"Recipes:"}
+      />
+
+      <RecipeList
+        recipes={recipes}
+        setRecipes={setRecipes}  
       />
 
     </div>
